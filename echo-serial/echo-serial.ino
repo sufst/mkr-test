@@ -18,12 +18,10 @@ char c;
 
 void loop() {
 
-    // grab serial input
-
     if (Serial.available()) {
         digitalWrite(ledPin, HIGH);
         c  = Serial.read();
-        delay(10); // slight delay for visible LED
+        delay(10); // slight delay for visible LED blink
         if (c == '\r')
             Serial.print("\r\n");
         else
