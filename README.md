@@ -15,3 +15,7 @@ Prints "Hello, World!" to the serial port.
 ### `blink`
 
 Blinks the onboard LED.
+
+### `echo-serial`
+
+Echoes serial port input.
