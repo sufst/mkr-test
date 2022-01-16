@@ -68,6 +68,9 @@ void dev__can__mcp2515__init()
         Serial.println("CAN BUS Shield init fail, try again");
         delay(100);
     }
+
+    if (!SYS__MANAGER__CAN_LOOPBACK_ENABLE)
+      CAN.setMode(MCP_NORMAL);
 }
 
 /*************************************************************************//**

@@ -39,6 +39,8 @@
 #define SYS__MANAGER__CAN_ID 7
 #define SYS__MANAGER__CAN_CS_PIN 9
 #define SYS__MANAGER__CAN_SPEED CAN_500KBPS
+
+#define SYS__MANAGER__CAN_LOOPBACK_ENABLE 1
 /*----------------------------------------------------------------------------
   type definitions
 ----------------------------------------------------------------------------*/
