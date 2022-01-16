@@ -6,7 +6,7 @@ The `res/` folder contains useful resources, including a diagram of the board pi
 
 ---
 
-## Basic Tests
+## General
 
 ### `helloworld`
 
@@ -22,7 +22,7 @@ Echoes serial port input.
 
 ---
 
-## XBee Tests
+## XBee
 
 ### `xbee-tx-no-api`
 
@@ -36,3 +36,11 @@ Transmits payload in API mode using the (xbee-arduino)[https://github.com/andrew
 Check the (developer guide)[https://github.com/andrewrapp/xbee-arduino/wiki/Developers-Guide] for more information on the library.
 
 For this test, both XBees must be configured to use transparent mode (parameter AP = API enabled with escaped characters [2]).
+
+---
+
+## CAN
+
+### `ecu-uno`
+
+A program for the Arduino Uno that emulates the DTAFast S60 Pro ECU (Engine Control Unit) CAN communication.
