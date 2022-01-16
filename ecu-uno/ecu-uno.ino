@@ -21,7 +21,7 @@
 #include "src/sys/sys__manager.h"
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     sys__manager__init();
 }
 
