@@ -22,7 +22,7 @@
 ----------------------------------------------------------------------------*/
 #include <SPI.h>
 //#include <mcp2515.h>
-#include <mcp2515_can.h>
+#include <mcp_can.h>
 
 #include "dev__can__mcp2515.h"
 #include "../sys/sys__manager.h"
@@ -47,7 +47,7 @@
   global variables
 ----------------------------------------------------------------------------*/
 //MCP2515 mcp2515(SYS__MANAGER__CAN_CS_PIN);  
-mcp2515_can CAN(SYS__MANAGER__CAN_CS_PIN);
+MCP_CAN CAN(SYS__MANAGER__CAN_CS_PIN);
 
 /*----------------------------------------------------------------------------
   static variables
@@ -64,7 +64,7 @@ mcp2515_can CAN(SYS__MANAGER__CAN_CS_PIN);
 *****************************************************************************/
 void dev__can__mcp2515__init()
 {
-    while (CAN_OK != CAN.begin(CAN_1000KBPS)) {             // init can bus : baudrate = 500k
+    while (CAN.begin(MCP_ANY, CAN_1000KBPS, MCP_16MHZ) != CAN_OK) {             // init can bus : baudrate = 500k
         Serial.println("CAN BUS Shield init fail, try again");
         delay(100);
     }
