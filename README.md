@@ -6,7 +6,7 @@ The `res/` folder contains useful resources, including a diagram of the board pi
 
 ---
 
-## Tests
+## Basic Tests
 
 ### `helloworld`
 
@@ -19,3 +19,20 @@ Blinks the onboard LED.
 ### `echo-serial`
 
 Echoes serial port input.
+
+---
+
+## XBee Tests
+
+### `xbee-tx-no-api`
+
+Transmits payload in transparent mode (raw bytes over serial).
+
+For this test, both XBees must be configured to use transparent mode (parameter AP = API disabled [0]).
+
+### `xbee-tx`
+
+Transmits payload in API mode using the (xbee-arduino)[https://github.com/andrewrapp/xbee-arduino] library.
+Check the (developer guide)[https://github.com/andrewrapp/xbee-arduino/wiki/Developers-Guide] for more information on the library.
+
+For this test, both XBees must be configured to use transparent mode (parameter AP = API enabled with escaped characters [2]).
