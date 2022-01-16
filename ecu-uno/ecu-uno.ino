@@ -1,7 +1,7 @@
 /*************************************************************************//**
 * @file ecu-uno.ino
-* @brief Start point of SUFST controller firmware for front Arduino
-* @copyright    Copyright (C) 2019  SOUTHAMPTON UNIVERSITY FORMULA STUDENT TEAM
+* @brief Emulator of DTA SFast S60 Pro ECU CAN messages
+* @copyright Copyright (C) 2019  SOUTHAMPTON UNIVERSITY FORMULA STUDENT TEAM
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,16 +20,11 @@
 #include "Arduino.h"
 #include "src/sys/sys__manager.h"
 
-void setup()
-{
-    //Initialise the system
+void setup() {
     Serial.begin(9600);
     sys__manager__init();
 }
 
-void loop()
-{
-    // Loop the system
+void loop() {
     sys__manager__process();
-    
 }
