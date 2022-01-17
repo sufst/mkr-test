@@ -69,16 +69,12 @@ void setup() {
     Serial.println("---CAN Initialized.");
 }
 
-static uint32_t gBlinkLedDate = 0;
-static uint32_t gReceivedFrameCount = 0;
-static uint32_t gSentFrameCount = 0;
-
 static const uint32_t canTxDelay_ms = 1000;
 static long time_ms = 0;
 
 void loop() {  
 
-    // todo - add sent frame counter
+    // todo - add tx frame counter
 
     if (millis() > time_ms + canTxDelay_ms) {
         time_ms = millis(); // new timestamp
@@ -103,14 +99,14 @@ void loop() {
         Serial.println();
     }
 
-    // todo - add received frame counter
+    // todo - add rx frame counter
 
     if (!digitalRead(interruptPinMCP)) {
         long unsigned int rxID;
         unsigned char rxLen = 0;
         unsigned char rxBuf[8];
         can.readMsgBuf(&rxID, &rxLen, rxBuf);
-        // rxID = rxID & 0xFFFF;
+        rxID = rxID & 0xFFFF;
 
         Serial.print("Received - ID:");
         Serial.print(rxID);
@@ -125,22 +121,4 @@ void loop() {
         Serial.println();
     }
 
-    // if (gBlinkLedDate < millis()) {
-
-    //     gBlinkLedDate += 2000;
-    //     digitalWrite(ledPin, !digitalRead(ledPin)); // toggle LED
-        
-    //     const bool ok = can.tryToSend(frame);
-        
-    //     if (ok) {
-    //         gSentFrameCount += 1;
-    //         Serial.print("Sent: ");
-    //         Serial.println(gSentFrameCount);
-    //     } else {
-    //         Serial.println("Send failure");
-    //     }
-    // }
-
 }
-
-//——————————————————————————————————————————————————————————————————————————————
