@@ -72,9 +72,10 @@ void setup() {
 static const uint32_t canTxDelay_ms = 1000;
 static long time_ms = 0;
 
-void loop() {  
+static uint32_t txFrameCount = 0;
+static uint32_t rxFrameCount = 0;
 
-    // todo - add tx frame counter
+void loop() {  
 
     if (millis() > time_ms + canTxDelay_ms) {
         time_ms = millis(); // new timestamp
@@ -97,9 +98,12 @@ void loop() {
         }
 
         Serial.println();
-    }
 
-    // todo - add rx frame counter
+        ++txFrameCount;
+
+        Serial.print("Transmitted Frames: ");
+        Serial.println(txFrameCount);
+    }
 
     if (!digitalRead(interruptPinMCP)) {
         long unsigned int rxID;
@@ -119,6 +123,11 @@ void loop() {
         }
 
         Serial.println();
+
+        ++rxFrameCount;
+
+        Serial.print("Received Frames: ");
+        Serial.println(rxFrameCount);
     }
 
 }
