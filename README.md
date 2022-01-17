@@ -2,7 +2,13 @@
 
 A set of test programs for Arduino MKR Zero.
 
-The `res/` folder contains useful resources, including a diagram of the board pinout and the SAMD21 processor datasheet.
+The `_resources/` folder contains useful resources, including a diagram of the board pinout and the SAMD21 processor datasheet.
+
+## Hardware
+
+Arduino Uno CAN Shield: (Seeed CAN Shield V2.0)[https://wiki.seeedstudio.com/CAN-BUS_Shield_V2.0/]
+
+Arduino MKR Zero CAN Shield: (MKR CAN Shield)[https://docs.arduino.cc/hardware/mkr-can-shield]
 
 ---
 
