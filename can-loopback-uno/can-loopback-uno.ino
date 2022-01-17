@@ -8,8 +8,6 @@ static const byte interruptPinMCP = 2; // INT (interrupt) output of MCP2515
 static const uint32_t baud = 115200;
 static const uint32_t blinkDelayInactive_ms = 100;
 
-static const uint32_t canTxDelay_ms = 1000;
-
 MCP_CAN can(chipSelectPinMCP);
 
 void setup() {
@@ -73,28 +71,35 @@ static uint32_t gBlinkLedDate = 0;
 static uint32_t gReceivedFrameCount = 0;
 static uint32_t gSentFrameCount = 0;
 
+static const uint32_t canTxDelay_ms = 1000;
+static long time_ms = 0;
+
 void loop() {  
 
-    unsigned long frameId = 1234;
-    uint8_t frameLen = 8;
-    uint8_t frameData[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+    if (millis() > time_ms + canTxDelay_ms) {
+        time_ms = millis(); // new timestamp
 
-    // todo - add confirmation of tx success
-    can.sendMsgBuf(frameId, 0, frameLen, frameData);
+        unsigned long frameId = 1234;
+        uint8_t frameLen = 8;
+        uint8_t frameData[8] = {0, 1, 2, 3, 4, 5, 6, 7};
 
-    Serial.print("Sending - ID:");
-    Serial.print(frameId);
+        // todo - add confirmation of tx success
+        can.sendMsgBuf(frameId, 0, frameLen, frameData);
 
-    Serial.print(" Data: ");
+        Serial.print("Sending - ID:");
+        Serial.print(frameId);
 
-    for (int i = 0; i < frameLen; i++) {
-        Serial.print(frameData[i]);
-        Serial.print(" ");
+        Serial.print(" Data: ");
+
+        for (int i = 0; i < frameLen; i++) {
+            Serial.print(frameData[i]);
+            Serial.print(" ");
+        }
+
+        Serial.println();
     }
 
-    Serial.println();
-
-    delay(canTxDelay_ms);
+    
 
     // if (gBlinkLedDate < millis()) {
 
@@ -112,6 +117,8 @@ void loop() {
     //     }
     // }
     
+    
+
     // todo - implement CAN rx
     // if (can.available()) {
     //     can.receive(frame);
