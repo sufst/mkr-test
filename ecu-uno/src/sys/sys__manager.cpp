@@ -60,13 +60,12 @@ sys__ecu_datastore_t sys__ecu_datastore;
 * @return None
 * @note
 *****************************************************************************/
-void sys__manager__init()
-{
+void sys__manager__init() {
 
-    // Initialise CAN MCP2515
 #if SYS__MANAGER__CAN_BUS_ENABLED 
     srv__comms__can_init(SYS__MANAGER__CAN_CS_PIN);
 #endif // SYS__MANAGER__CAN_BUS_ENABLED
+    
     Serial.println("SYSTEM INIT FINISHED");
 }
 
@@ -76,8 +75,7 @@ void sys__manager__init()
 * @return None
 * @note
 *****************************************************************************/
-void sys__manager__process()
-{
+void sys__manager__process() {
     srv__comms__process(sys__ecu_datastore);
     delay(1000);
 }

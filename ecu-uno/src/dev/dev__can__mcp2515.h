@@ -1,21 +1,21 @@
-/*************************************************************************//**
-* @file dev__can__mcp2515.h
-* @brief Device layer implementing the MCP2515 CAN Controller
-* @copyright    Copyright (C) 2019  SOUTHAMPTON UNIVERSITY FORMULA STUDENT TEAM
+/*************************************************************************/ /**
+ * @file dev__can__mcp2515.h
+ * @brief Device layer implementing the MCP2515 CAN Controller
+ * @copyright    Copyright (C) 2019  SOUTHAMPTON UNIVERSITY FORMULA STUDENT TEAM
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*****************************************************************************/
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *****************************************************************************/
 
 /*----------------------------------------------------------------------------
   @brief
@@ -26,8 +26,8 @@
 /*----------------------------------------------------------------------------
   nested include files
 ----------------------------------------------------------------------------*/
-#include "Arduino.h"
 #include "../sys/sys__datastore.h"
+#include "Arduino.h"
 
 /*----------------------------------------------------------------------------
   macros
@@ -40,8 +40,7 @@
 /*----------------------------------------------------------------------------
   type definitions
 ----------------------------------------------------------------------------*/
-typedef enum
-{
+typedef enum {
     DEV__CAN__CMD_DAMPER = 0x01,
     DEV__CAN__CMD_ACCELEROMETER_X,
     DEV__CAN__CMD_ACCELEROMETER_Y,
@@ -51,8 +50,7 @@ typedef enum
     DEV__CAN__CMD_TIME_STAMP
 } dev__can__cmd_t;
 
-typedef enum
-{
+typedef enum {
     DEV__CAN__CMD_2000 = 0x2000,
     DEV__CAN__CMD_2001,
     DEV__CAN__CMD_2002,
