@@ -20,6 +20,13 @@ Blinks the onboard LED.
 
 Echoes serial port input.
 
+### `rtc`
+
+Prints current date and time during random intervals starting from 0/0/0 0:0:0 when powered on.
+The RTC is only accurate to 1 second. 
+
+This requires the [RTCZero](https://www.arduino.cc/reference/en/libraries/rtczero/) library.
+
 ---
 
 ## XBee Tests
