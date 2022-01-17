@@ -79,13 +79,17 @@ void loop() {
 
     if (millis() > time_ms + canTxDelay_ms) {
         time_ms = millis(); // new timestamp
+        
+        Serial.print("time (ms): ");
+        Serial.print(millis());
+        Serial.print(" | ");
 
         unsigned long frameId = 1234;
         uint8_t frameLen = 8;
         uint8_t frameData[8] = {0, 1, 2, 3, 4, 5, 6, 7};
 
-        // todo - add confirmation of tx success
         uint8_t txStat = can.sendMsgBuf(frameId, 0, frameLen, frameData);
+
         if (txStat == CAN_OK) {
             Serial.print("Sending - ID:");
             Serial.print(frameId);
@@ -110,6 +114,11 @@ void loop() {
     }
 
     if (!digitalRead(interruptPinMCP)) {
+
+        Serial.print("time (ms): ");
+        Serial.print(millis());
+        Serial.print(" | ");
+
         long unsigned int rxID;
         unsigned char rxLen = 0;
         unsigned char rxBuf[8];
