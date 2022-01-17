@@ -2,8 +2,10 @@
 
 const int ledPin = LED_BUILTIN;
 
-static const byte chipSelectPinMCP = 9;  // CS (chip select) input of MCP2515
-static const byte interruptPinMCP = 2; // INT (interrupt) output of MCP2515
+/* for MKR, CS = 3, INT = 7
+   for Uno, MS = 9, INT = 2*/
+static const byte chipSelectPinMCP = 3;  // CS (chip select) input of MCP2515
+static const byte interruptPinMCP = 7; // INT (interrupt) output of MCP2515
 
 static const uint32_t baud = 115200;
 static const uint32_t blinkDelayInactive_ms = 100;
