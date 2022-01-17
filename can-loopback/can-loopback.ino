@@ -8,7 +8,7 @@ static const byte chipSelectPinMCP = 3;  // CS (chip select) input of MCP2515
 static const byte interruptPinMCP = 7; // INT (interrupt) output of MCP2515
 
 static const uint32_t baud = 115200;
-static const uint32_t blinkDelayInactive_ms = 100;
+static const uint32_t blinkDelayInactive_ms = 500;
 
 MCP_CAN can(chipSelectPinMCP);
 
