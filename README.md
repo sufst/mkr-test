@@ -41,6 +41,15 @@ For this test, both XBees must be configured to use transparent mode (parameter 
 
 ## CAN
 
+### `can-loopback-uno`
+
+Sends CAN messages using (ACAN2515)[https://github.com/pierremolinaro/acan2515] library in loopback mode. 
+Use this to verify the CAN shield functions correctly.
+
+Adapted from ACAN2515 `LoopBackDemo.ino` example.
+
 ### `ecu-uno`
 
-A program for the Arduino Uno that emulates the DTAFast S60 Pro ECU (Engine Control Unit) CAN communication.
+A program for the Arduino Uno that emulates the DTAFast S60 Pro ECU (Engine Control Unit) CAN communication using the (mcp_can)[https://github.com/coryjfowler/MCP_CAN_lib] library by coryjfowler.
+
+Use this when bench-testing CAN communications with the ECU.
