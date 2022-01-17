@@ -4,17 +4,17 @@
 
 const int ledPin = LED_BUILTIN;
 
-static const byte MCP2515_CS = 9;  // CS (chip select) input of MCP2515
-static const byte MCP2515_INT = 2; // INT (interrupt) output of MCP2515
+static const byte chipSelectPinMCP = 9;  // CS (chip select) input of MCP2515
+static const byte interruptPinMCP = 2; // INT (interrupt) output of MCP2515
 
 //  MCP2515 Quartz Frequency
-static const uint32_t QUARTZ_FREQUENCY = (16UL * 1000UL * 1000UL); // 16 MHz
+static const uint32_t quartzFrequencyMCP = (16UL * 1000UL * 1000UL); // 16 MHz
 
-static const uint32_t baud = 9600;
-static const uint32_t blink_delay_ms_inactive = 100;
+static const uint32_t baud = 115200;
+static const uint32_t blinkDelayInactive_ms = 100;
 
 //  MCP2515 Driver object
-ACAN2515 can(MCP2515_CS, SPI, MCP2515_INT);
+ACAN2515 can(chipSelectPinMCP, SPI, interruptPinMCP);
 
 void setup() {
 
@@ -24,7 +24,7 @@ void setup() {
     Serial.begin(baud);
 
     while (!Serial) { // blink LED while inactive
-        delay(blink_delay_ms_inactive);
+        delay(blinkDelayInactive_ms);
         digitalWrite(ledPin, !digitalRead(ledPin)); // toggle LED
     }
 
@@ -35,7 +35,7 @@ void setup() {
     Serial.println("---Initializing CAN.");
 
     // Match ECU bit-rate (1Mb/s)
-    ACAN2515Settings settings(QUARTZ_FREQUENCY, 1000UL * 1000UL);
+    ACAN2515Settings settings(quartzFrequencyMCP, 1000UL * 1000UL);
 
     settings.mRequestedMode = ACAN2515Settings::LoopBackMode; // Enable Loopback Mode
 
@@ -100,7 +100,7 @@ void loop() {
     if (gBlinkLedDate < millis()) {
 
         gBlinkLedDate += 2000;
-        digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN)); // toggle LED
+        digitalWrite(ledPin, !digitalRead(ledPin)); // toggle LED
         
         const bool ok = can.tryToSend(frame);
         
