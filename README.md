@@ -41,12 +41,12 @@ For this test, both XBees must be configured to use transparent mode (parameter 
 
 ## CAN Tests
 
-### `can-loopback-uno`
+### `can-loopback`
 
-Sends CAN messages using (ACAN2515)[https://github.com/pierremolinaro/acan2515] library in loopback mode. 
+Sends CAN messages using (mcp_can)[https://github.com/coryjfowler/MCP_CAN_lib] library in loopback mode. 
 Use this to verify the CAN shield functions correctly.
 
-Adapted from ACAN2515 `LoopBackDemo.ino` example.
+Adapted from mcp_can `CAN_loopback.ino` example.
 
 ### `ecu-uno`
 
