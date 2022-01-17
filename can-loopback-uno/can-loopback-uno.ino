@@ -85,24 +85,28 @@ void loop() {
         uint8_t frameData[8] = {0, 1, 2, 3, 4, 5, 6, 7};
 
         // todo - add confirmation of tx success
-        can.sendMsgBuf(frameId, 0, frameLen, frameData);
+        uint8_t txStat = can.sendMsgBuf(frameId, 0, frameLen, frameData);
+        if (txStat == CAN_OK) {
+            Serial.print("Sending - ID:");
+            Serial.print(frameId);
 
-        Serial.print("Sending - ID:");
-        Serial.print(frameId);
+            Serial.print(" Data: ");
 
-        Serial.print(" Data: ");
+            for (int i = 0; i < frameLen; i++) {
+                Serial.print(frameData[i]);
+                Serial.print(" ");
+            }
 
-        for (int i = 0; i < frameLen; i++) {
-            Serial.print(frameData[i]);
-            Serial.print(" ");
+            Serial.println();
+
+            ++txFrameCount;
+
+            Serial.print("Transmitted Frames: ");
+            Serial.println(txFrameCount);
+        } else {
+            Serial.print("Unable to send CAN frame. Error: ");
+            Serial.println(txStat);
         }
-
-        Serial.println();
-
-        ++txFrameCount;
-
-        Serial.print("Transmitted Frames: ");
-        Serial.println(txFrameCount);
     }
 
     if (!digitalRead(interruptPinMCP)) {
