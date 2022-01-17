@@ -14,6 +14,8 @@ void setup() {
 
     pinMode(ledPin, OUTPUT);
     digitalWrite(ledPin, HIGH);
+    
+    pinMode(interruptPinMCP, INPUT);
 
     Serial.begin(baud);
 
@@ -76,6 +78,8 @@ static long time_ms = 0;
 
 void loop() {  
 
+    // todo - add sent frame counter
+
     if (millis() > time_ms + canTxDelay_ms) {
         time_ms = millis(); // new timestamp
 
@@ -99,7 +103,27 @@ void loop() {
         Serial.println();
     }
 
-    
+    // todo - add received frame counter
+
+    if (!digitalRead(interruptPinMCP)) {
+        long unsigned int rxID;
+        unsigned char rxLen = 0;
+        unsigned char rxBuf[8];
+        can.readMsgBuf(&rxID, &rxLen, rxBuf);
+        // rxID = rxID & 0xFFFF;
+
+        Serial.print("Received - ID:");
+        Serial.print(rxID);
+
+        Serial.print(" Data: ");
+
+        for (int i = 0; i < rxLen; i++) {
+            Serial.print(rxBuf[i]);
+            Serial.print(" ");
+        }
+
+        Serial.println();
+    }
 
     // if (gBlinkLedDate < millis()) {
 
@@ -116,18 +140,7 @@ void loop() {
     //         Serial.println("Send failure");
     //     }
     // }
-    
-    
 
-    // todo - implement CAN rx
-    // if (can.available()) {
-    //     can.receive(frame);
-
-    //     gReceivedFrameCount++;
-        
-    //     Serial.print("Received: ");
-    //     Serial.println(gReceivedFrameCount);
-    // }
 }
 
 //——————————————————————————————————————————————————————————————————————————————
