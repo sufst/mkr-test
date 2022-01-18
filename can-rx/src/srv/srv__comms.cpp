@@ -117,8 +117,8 @@ void srv__comms__CAN_init() {
         can.setMode(MCP_LOOPBACK);
 
 #if DEBUG_ENABLED
-    Serial.print("Loopback = ");
-    Serial.println(COMMS__CAN_LOOPBACK);
+    Serial.print("Loopback ");
+    Serial.println(COMMS__CAN_LOOPBACK ? "ENABLED" : "DISABLED");
 #endif // DEBUG_ENABLED
 
 #if DEBUG_ENABLED
