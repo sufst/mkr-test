@@ -73,6 +73,10 @@ void sys__manager__init() {
 
 void sys__manager__process() {
 
+#if DEBUG_ENABLED
+    srv__comms__process();
+#endif // DEBUG_ENABLED
+
 }
 
 /*----------------------------------------------------------------------------

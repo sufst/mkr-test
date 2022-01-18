@@ -80,6 +80,8 @@ void srv__comms__init() {
 
 void srv__comms__process() {
 
+    srv__comms__CAN_process();
+
 }
 
 /*----------------------------------------------------------------------------
@@ -191,6 +193,35 @@ void srv__comms__CAN_test(const unsigned loops, const unsigned delay_ms) {
 }
 
 #endif // COMMS__CAN_TEST
+
+void srv__comms__CAN_process() {
+    if (!digitalRead(COMMS__CAN_INT_PIN)) {
+
+
+        long unsigned int rxID;
+        unsigned char rxLen = 0;
+        unsigned char rxBuf[8];
+        can.readMsgBuf(&rxID, &rxLen, rxBuf);
+        rxID = rxID & 0xFFFF;
+
+#if DEBUG_ENABLED
+
+        Serial.print("Received - ID:");
+        Serial.print(rxID);
+
+        Serial.print(" Data: ");
+
+        for (int i = 0; i < rxLen; i++) {
+            Serial.print(rxBuf[i]);
+            Serial.print(" ");
+        }
+
+        Serial.println();
+
+#endif // DEBUG_ENABLED
+
+    }
+}
 
 #endif // COMMS__CAN_ENABLED
 

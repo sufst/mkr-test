@@ -44,7 +44,8 @@ void srv__comms__init();
 void srv__comms__process();
 
 void srv__comms__CAN_init();
-void srv__comms__CAN_test(const uint loops=5, const unsigned delay_ms=1000);
+void srv__comms__CAN_test(const uint loops=1, const unsigned delay_ms=1000);
+void srv__comms__CAN_process();
 
 /*----------------------------------------------------------------------------
   inlines
