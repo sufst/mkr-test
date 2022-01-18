@@ -23,14 +23,14 @@
 
 #define COMMS__CAN_ENABLED   true
 #define COMMS__CAN_RETRY_MS  1000
-#define COMMS__CAN_LOOPBACK  true
+#define COMMS__CAN_LOOPBACK  false
 #define COMMS__CAN_CS_PIN    3
 #define COMMS__CAN_INT_PIN   7
 #define COMMS__CAN_SPEED     CAN_1000KBPS
 #define COMMS__CAN_MCP_FREQ  MCP_16MHZ
 
 /* Tests: */
-#define COMMS__CAN_TEST      true
+#define COMMS__CAN_TEST      false
 
 /*----------------------------------------------------------------------------
   constants
