@@ -49,7 +49,18 @@
 
 void sys__manager__init() {
 
+#if DEBUG_ENABLED
+    pinMode(DEBUG_LED_PIN, OUTPUT);
+    digitalWrite(DEBUG_LED_PIN, HIGH);
+#endif
 
+#if COMMS_ENABLED
+    srv__comms__init();
+#endif
+
+#if DEBUG_ENABLED
+    Serial.println("--- System Initialized");
+#endif
 
 }
 
